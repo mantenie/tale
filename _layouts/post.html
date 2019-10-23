@@ -40,9 +40,15 @@ layout: default
 
   {{ content }}
 
+  {% if page.last_modified_at and page.last_modified_at > page.date %}
+  <div class="post-info">
+    Letzte Änderung: <time datetime="{{ page.last_modified_at }}">{{ page.last_modified_at | date: '%d.%m.%Y %H:%M' }}
+    </time>
+  </div>
+  {% endif %}
 </div>
 
-<div class="pagination">
+<div class=" pagination">
   {% if page.next.url %}
   <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
   {% endif %}
